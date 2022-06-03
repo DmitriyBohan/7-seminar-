@@ -28,20 +28,14 @@ int SumElementsMainDiagonal(int[,] array3)
     int result = 0;
     for (int i = 0; i < array3.GetLength(0); i++)
     {
-        for (int j = 0; j < array3.GetLength(1); j++)
-        {
-            if (i == j)
-            {
-                result = result + array3[i, j];
-            }
-        }
-        
+        result = result + array3[i, i];
     }
     return result;
 }
 
 void PrintArray(int[,] array3)
 {
+    Console.ForegroundColor=ConsoleColor.Green; // покрасить в цвет
     for (int i = 0; i < array3.GetLength(0); i++)
     {
         for (int j = 0; j < array3.GetLength(1); j++)
@@ -53,11 +47,13 @@ void PrintArray(int[,] array3)
 }
 
 int[,] arrayRandomNumber = new int[4, 4];
-int sumElement = SumElementsMainDiagonal(arrayRandomNumber);
 
 FillArray(arrayRandomNumber);
+int sumElement = SumElementsMainDiagonal(arrayRandomNumber);
+Console.ForegroundColor=ConsoleColor.Red;
 Console.WriteLine("--------- ");
 PrintArray(arrayRandomNumber);
+Console.ForegroundColor=ConsoleColor.Red;
 Console.WriteLine("---------");
-
+Console.ResetColor();   // вернуть цвет
 Console.WriteLine(sumElement);

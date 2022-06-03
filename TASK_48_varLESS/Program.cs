@@ -1,21 +1,22 @@
 ﻿/*
-Задача 46: 
-Задайте двумерный массив размером m×n, 
-заполненный случайными целыми числами.
+Задача 48: 
+Задайте двумерный массив размера m на n, 
+каждый элемент в массиве находится по формуле: 
+Aₘₙ = m+n. Выведите полученный массив на экран.
 m = 3, n = 4.
-1 4 8 19
-5 -2 33 -2
-77 3 8 1
+0 1 2 3
+1 2 3 4
+2 3 4 5
 */
 
-int[,] GetRandomArray(int rowNumber, int colNumber, int deviation)
+int[,] GetRandomArray(int rowNumber, int colNumber)
 {
     int[,] result = new int[rowNumber, colNumber];
     for (int i = 0; i < rowNumber; i++)
     {
         for (int j = 0; j < colNumber; j++)
         {
-            result[i, j] = new Random().Next(-deviation, deviation + 1);
+            result[i, j] = i+j;
         }
     }
     return result;
@@ -23,7 +24,7 @@ int[,] GetRandomArray(int rowNumber, int colNumber, int deviation)
 
 void Print2DArray(int[,] arrayToPrint)
 {
-    Console.Write($"[ ]\t");
+    Console.Write($"[ ]\t");   //   \t -добовляет табуляцию
     const int starIndex =65;
     for (var i = starIndex; i <starIndex+ arrayToPrint.GetLength(1); i++)
     {
@@ -41,5 +42,7 @@ void Print2DArray(int[,] arrayToPrint)
     }
 }
 
-int[,] randomArray = GetRandomArray(5, 20, 10);
+int rowNumber = Convert.ToInt32(Console.ReadLine());
+int colomnNumber = Convert.ToInt32(Console.ReadLine());
+int[,] randomArray = GetRandomArray(rowNumber,colomnNumber);
 Print2DArray(randomArray);
